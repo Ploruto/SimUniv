@@ -1,9 +1,10 @@
 #include "include/entities/entity.hpp"
+#include "include/utils/calculations/DVector.hpp"
 #include <iostream>
 
+using calculations::DVector;
 int main()
 {
-    entity::Entity e(20U);
-    std::cout << e.get_type() << std::endl;
+    DVector<short, 3U> d;
     return 0;
 }
