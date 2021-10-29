@@ -10,8 +10,6 @@ namespace tick
         unsigned long long m_current_tick;
         unsigned int m_tick_per_day;
 
-        static TickTime *instance;
-
         TickTime();
 
     public:

@@ -15,9 +15,8 @@ unsigned long long TickTime::get_current_tick()
 
 TickTime *TickTime::get_instance()
 {
-    if (!instance)
-        TickTime *instace;
-    return instance;
+    static TickTime instance;
+    return &instance;
 }
 
 tick::Datetime TickTime::create_current_datetime()
