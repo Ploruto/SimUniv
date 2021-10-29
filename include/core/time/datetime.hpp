@@ -1,5 +1,6 @@
 #ifndef SW_DATETIME
 #define SW_DATETIME
+#include <string>
 
 namespace tick
 {
@@ -14,8 +15,8 @@ namespace tick
         bool operator<(const Datetime &dt);
         bool operator>(const Datetime &dt);
 
-        char *get_date();
-        char *get_time();
+        std::string get_date();
+        std::string get_time();
 
         void set_date_time(unsigned long long tick);
     };

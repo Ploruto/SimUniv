@@ -1,5 +1,6 @@
 #include "../../../include/core/time/datetime.hpp"
 #include "../../../include/core/time/tickTime.hpp"
+#include <string>
 
 using tick::Datetime;
 
@@ -20,13 +21,13 @@ void Datetime::set_date_time(unsigned long long tick)
     this->m_date_time_tick = tick;
 }
 
-char *Datetime::get_date()
+std::string Datetime::get_date()
 {
     TickTime::get_instance()->get_current_tick();
-    return "placeHolderForNow";
+    return "someTest";
 }
 
-char *Datetime::get_time()
+std::string Datetime::get_time()
 {
     return "placeHolderForNow";
 }

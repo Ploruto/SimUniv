@@ -6,7 +6,21 @@ enable_testing()
 
 include_directories(include)
 
-add_executable(SocialWorld main.cpp src/entities/entity.cpp include/entities/entity.hpp)
+add_executable(SocialWorld
+main.cpp
+
+src/entities/entity.cpp
+include/entities/entity.hpp
+
+src/core/time/datetime.cpp
+include/core/time/datetime.hpp
+
+src/core/time/tickTime.cpp
+include/core/time/tickTime.hpp
+
+)
+
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
