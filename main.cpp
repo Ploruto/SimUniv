@@ -1,10 +1,11 @@
-#include "include/entities/entity.hpp"
-#include "include/utils/calculations/DVector.hpp"
+#include "include/core/time/tickTime.hpp"
 #include <iostream>
 
-using calculations::DVector;
 int main()
 {
-    DVector<short, 3U> d;
+    tick::TickTime *time = tick::TickTime::get_instance();
+    std::cout << time->get_current_tick() << std::endl;
+    time->next_tick();
+    std::cout << time->create_current_datetime().get_date() << std::endl;
     return 0;
 }

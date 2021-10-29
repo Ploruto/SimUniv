@@ -1,12 +1,14 @@
 #ifndef SW_DATETIME
 #define SW_DATETIME
+#include "./tickTime.hpp"
 
-namespace time
+namespace tick
 {
-    struct Datetime
+    class Datetime
     {
     private:
         unsigned long long m_date_time_tick;
+        static TickTime *time;
 
     public:
         Datetime(unsigned long long tick);
@@ -14,8 +16,10 @@ namespace time
         bool operator<(const Datetime &dt);
         bool operator>(const Datetime &dt);
 
-        char *get_date(unsigned long long ticks_per_day);
-        char *get_time(unsigned long long ticks_per_day);
+        char *get_date();
+        char *get_time();
+
+        void set_date_time(unsigned long long tick);
     };
 
 }
