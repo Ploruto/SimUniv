@@ -1,6 +1,5 @@
 #ifndef SW_DATETIME
 #define SW_DATETIME
-#include "./tickTime.hpp"
 
 namespace tick
 {
@@ -8,7 +7,6 @@ namespace tick
     {
     private:
         unsigned long long m_date_time_tick;
-        static TickTime *time;
 
     public:
         Datetime(unsigned long long tick);

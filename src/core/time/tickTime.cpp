@@ -16,7 +16,7 @@ unsigned long long TickTime::get_current_tick()
 TickTime *TickTime::get_instance()
 {
     if (!instance)
-        TickTime *instace{};
+        TickTime *instace;
     return instance;
 }
 
