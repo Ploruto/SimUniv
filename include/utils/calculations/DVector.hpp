@@ -4,21 +4,21 @@
 
 namespace calculations
 {
-    template <typename T, short DIMENSION>
+    template <typename TClass, short DIMENSION>
     struct DVector
     {
     private:
-        std::array<T, DIMENSION> m_points;
+        std::array<TClass, DIMENSION> m_points;
 
     public:
         DVector() {}
-        DVector(std::array<T, DIMENSION> points) : m_points(points) {}
+        DVector(std::array<TClass, DIMENSION> points) : m_points(points) {}
 
-        std::array<T, DIMENSION> get_points()
+        std::array<TClass, DIMENSION> get_points()
         {
             return this->m_points;
         }
-        void set_points(std::array<T, DIMENSION> points)
+        void set_points(std::array<TClass, DIMENSION> points)
         {
             this->m_points = points;
         }

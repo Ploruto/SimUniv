@@ -33,6 +33,10 @@ namespace entity
         calculations::DVector<float, 3> get_size();
         void set_size(std::array<float, 3> size);
         void set_size(calculations::DVector<float, 3> vel);
+
+        void event_entity_handler(unsigned short functionID, unsigned short argID);
+
+        auto get_entity_handler();
     };
 
 }
