@@ -13,7 +13,8 @@
         "new": "cpp",
         "numeric": "cpp",
         "cmath": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "array": "cpp"
     },
     "cmake.configureOnOpen": true
 }
