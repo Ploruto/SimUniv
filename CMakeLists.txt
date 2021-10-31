@@ -20,6 +20,9 @@ include/core/time/tickTime.hpp
 
 include/core/event/datastructes/event.hpp
 
+include/core/spatial/datastructes/spatialGrid.hpp
+
+include/core/spatial/datastructes/spatialObject.hpp
 )
 
 
