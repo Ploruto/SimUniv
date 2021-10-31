@@ -1,5 +1,5 @@
-#ifndef SW_ENTITY
-#define SW_ENTITY
+#ifndef SU_ENTITY
+#define SU_ENTITY
 #include "../utils/calculations/DVector.hpp"
 
 namespace entity
@@ -34,9 +34,7 @@ namespace entity
         void set_size(std::array<float, 3> size);
         void set_size(calculations::DVector<float, 3> vel);
 
-        void event_entity_handler(unsigned short functionID, unsigned short argID);
-
-        auto get_entity_handler();
+        void event_entity_handler(unsigned short function_id, unsigned short arg_id, short arg_value);
     };
 
 }

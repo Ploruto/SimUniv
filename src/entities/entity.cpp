@@ -1,6 +1,5 @@
 #include "../../include/entities/entity.hpp"
 #include "../../include/utils/calculations/DVector.hpp"
-#include "../../include/core/event/datastructes/eventFunction.hpp"
 #include <iostream>
 
 using entity::Entity;
@@ -66,20 +65,15 @@ void Entity::set_size(calculations::DVector<float, 3> vel)
     this->m_size = vel;
 }
 
-void Entity::event_entity_handler(unsigned short functionID, unsigned short argID)
+void Entity::event_entity_handler(unsigned short function_id, unsigned short arg_id, short arg_value)
 {
-    switch (functionID)
+    switch (function_id)
     {
     case 0:
-        std::cout << "working!" << std::endl;
+        std::cout << "hey it works, got params: " << function_id << " " << arg_id << " " << arg_value << std::endl;
         break;
 
     default:
         break;
     }
-}
-
-auto Entity::get_entity_handler()
-{
-    return event::getFunctionPointer<entity::Entity>();
 }
