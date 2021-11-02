@@ -4,8 +4,7 @@
 #include "include/entities/entity.hpp"
 #include <iostream>
 
-int main()
-{
+int main() {
   entity::Entity e;
   entity::Entity e1;
   entity::Entity e2;
@@ -14,10 +13,8 @@ int main()
   e_event->set_arg_value(10);
 
   spatial::spatialGrid<30, entity::Entity> grid;
-  grid.add_entity(0, 0, &e);
-  grid.add_entity(0, 0, &e1);
-  grid.add_entity(0, 0, &e2);
 
+  std::cout << grid.get_test() << std::endl;
   e_event->call_event_handler();
   return 0;
 }
