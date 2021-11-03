@@ -18,6 +18,12 @@ int main()
   grid.add_entity(0, 0, &e1);
   grid.add_entity(0, 0, &e2);
 
+  spatial::SpatialObject<entity::Entity> *current = grid.get_entity(0, 0);
+  while (current->m_next)
+  {
+    std::cout << current << std::endl;
+    current = current->m_next;
+  }
   e_event->call_event_handler();
   return 0;
 }

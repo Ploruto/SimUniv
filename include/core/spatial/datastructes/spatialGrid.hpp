@@ -1,29 +1,32 @@
 #ifndef SU_SPATIALGRID
 #define SU_SPATIALGRID
 #include "./spatialObject.hpp"
-#include <array>
+#include <vector>
 namespace spatial
 {
   template <unsigned short SIZE, class T>
   struct spatialGrid
   {
   private:
-    spatial::SpatialObject *cells = new spatial::SpatialObject *[SIZE * SIZE]
-    { nullptr };
+    spatial::SpatialObject<T> **cells = new spatial::SpatialObject<T> *[SIZE * SIZE];
+    unsigned int get_index(unsigned short x, unsigned short y)
+    {
+      return (y * SIZE) + x;
+    }
 
   public:
-    void add_entity(unsigned short x, unsigned short y, T *entity)
+    void
+    add_entity(unsigned short x, unsigned short y, T *entity)
     {
       spatial::SpatialObject<T> *e = new spatial::SpatialObject<T>(entity);
-      if (!get_cell(x, y)) //get cell at x,y
+      if (!cells[get_index(x, y)]) //get cell at x,y
       {
-        set_cell(x, y, e); //set cell at x,y
-
+        cells[get_index(x, y)] = e;
         e->m_prev = nullptr;
       }
       else
       {
-        spatial::SpatialObject<T> *current = get_cell(x, y);
+        spatial::SpatialObject<T> *current = cells[get_index(x, y)];
         while (current->m_next)
         {
           current = current->m_next;
@@ -35,7 +38,7 @@ namespace spatial
     spatial::SpatialObject<T> *remove_entity(unsigned short x, unsigned short y,
                                              T *entity)
     {
-      spatial::SpatialObject<T> *current = get_cell(x, y);
+      spatial::SpatialObject<T> *current = cells[get_index(x, y)];
       while (current->m_next && current->m_entity != entity)
       {
         current = current->m_next;
@@ -45,6 +48,11 @@ namespace spatial
       current->m_next->m_prev = current->m_prev;
 
       return current;
+    }
+
+    spatial::SpatialObject<T> *get_entity(unsigned short x, unsigned short y)
+    {
+      return cells[get_index(x, y)];
     }
   };
 
