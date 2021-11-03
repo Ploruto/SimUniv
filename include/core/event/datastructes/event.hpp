@@ -2,6 +2,8 @@
 #define SU_EVENT
 #include <type_traits>
 #include "../../../entities/entity.hpp"
+#include "./eventData.hpp"
+#include <vector>
 namespace event
 {
     template <class T>
@@ -11,15 +13,15 @@ namespace event
 
     private:
         T *m_entity;
-        unsigned short m_function_id;
-        unsigned short m_arg_id;
-        short m_arg_value;
-        unsigned short m_priority;
+        std::vector<eventData> event_data_list = new std::vector<eventData>;
 
     public:
         void call_event_handler()
         {
-            (this->m_entity->event_entity_handler)(this->m_function_id, this->m_arg_id, this->m_arg_value);
+            for (auto &&event_data : this->event_data_list)
+            {
+                (this->m_entity->event_entity_handler)(event_data.function_id, event_data.function_arg_id, event_data.arg_value);
+            }
         }
 
         Event(T *entity, unsigned short function_id, unsigned short arg_id, unsigned short priority, short arg_value)
