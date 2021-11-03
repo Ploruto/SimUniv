@@ -14,7 +14,9 @@
         "numeric": "cpp",
         "cmath": "cpp",
         "utility": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "algorithm": "cpp"
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "C_Cpp.errorSquiggles": "Disabled"
 }
