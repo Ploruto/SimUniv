@@ -1,7 +1,8 @@
 #ifndef SU_SPATIALGRID
 #define SU_SPATIALGRID
 #include "./spatialObject.hpp"
-#include <vector>
+#include <limits>
+#include <math.h>
 namespace spatial
 {
   template <unsigned short SIZE, class T>
@@ -9,24 +10,31 @@ namespace spatial
   {
   private:
     spatial::SpatialObject<T> **cells = new spatial::SpatialObject<T> *[SIZE * SIZE];
-    unsigned int get_index(unsigned short x, unsigned short y)
+
+  public:
+    unsigned int get_index(T *entity)
     {
-      return (y * SIZE) + x;
+      int xIndex = (int)std::floor(entity->get_position().get_points()[0] / std::numeric_limits<double>::max() * 2);
+      int yIndex = (int)std::floor(entity->get_position().get_points()[1] / std::numeric_limits<double>::max() * 2);
+      std::cout << xIndex << std::endl;
+      std::cout << yIndex << std::endl;
+      return 0;
+      //return (y * SIZE) + x;
     }
 
   public:
     void
-    add_entity(unsigned short x, unsigned short y, T *entity)
+    add_entity(T *entity)
     {
       spatial::SpatialObject<T> *e = new spatial::SpatialObject<T>(entity);
-      if (!cells[get_index(x, y)]) //get cell at x,y
+      if (!cells[get_index(e)])
       {
-        cells[get_index(x, y)] = e;
+        cells[get_index(e)] = e;
         e->m_prev = nullptr;
       }
       else
       {
-        spatial::SpatialObject<T> *current = cells[get_index(x, y)];
+        spatial::SpatialObject<T> *current = cells[get_index(e)];
         while (current->m_next)
         {
           current = current->m_next;
@@ -35,10 +43,10 @@ namespace spatial
         e->m_prev = current;
       }
     }
-    spatial::SpatialObject<T> *remove_entity(unsigned short x, unsigned short y,
-                                             T *entity)
+    spatial::SpatialObject<T> *remove_entity(
+        T *entity)
     {
-      spatial::SpatialObject<T> *current = cells[get_index(x, y)];
+      spatial::SpatialObject<T> *current = cells[get_index(entity)];
       while (current->m_next && current->m_entity != entity)
       {
         current = current->m_next;

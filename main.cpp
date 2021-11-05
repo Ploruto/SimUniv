@@ -7,9 +7,11 @@
 
 int main()
 {
-  auto *randomRef = su_random::suRandom::get_instance();
-  std::cout << randomRef->get_random_int(20, 25) << std::endl;
-  std::cout << randomRef->get_random_float(1, 40) << std::endl;
-  std::cout << randomRef->get_random_double(1, 40) << std::endl;
+  entity::Entity e, e1, e2, e3;
+  spatial::spatialGrid<30, entity::Entity> grid;
+  std::array<double, 3> pos{140410, 14010, 140};
+  e.set_pos(pos);
+  grid.get_index(&e);
+
   return 0;
 }

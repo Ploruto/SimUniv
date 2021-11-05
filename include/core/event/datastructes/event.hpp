@@ -4,6 +4,8 @@
 #include "../../../entities/entity.hpp"
 #include "./eventData.hpp"
 #include <vector>
+#include <iostream>
+
 namespace event
 {
     template <class T>
@@ -25,12 +27,12 @@ namespace event
         }
 
         Event(T *entity, unsigned short function_id, unsigned short arg_id, unsigned short priority, short arg_value)
-            : m_entity(entity), m_function_id(function_id), m_arg_id(arg_id), m_priority(priority), m_arg_value(arg_value)
+            : m_entity(entity)
         {
         }
 
         Event(T *entity, unsigned short function_id, unsigned short arg_id, unsigned short priority)
-            : m_entity(entity), m_function_id(function_id), m_arg_id(arg_id), m_priority(priority) {}
+            : m_entity(entity) {}
 
         void set_arg_value(short value)
         {
